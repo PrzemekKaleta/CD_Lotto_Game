@@ -6,6 +6,8 @@ public class WinDto {
 
     private int reward;
 
+    private int hit;
+
     public boolean isWin() {
         return win;
     }
@@ -20,5 +22,13 @@ public class WinDto {
 
     public void setReward(int reward) {
         this.reward = reward;
+    }
+
+    public int getHit() {
+        return hit;
+    }
+
+    public void setHit(int hit) {
+        this.hit = hit;
     }
 }

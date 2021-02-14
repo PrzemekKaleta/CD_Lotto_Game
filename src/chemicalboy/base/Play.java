@@ -3,7 +3,6 @@ package chemicalboy.base;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Play {
 
@@ -13,51 +12,47 @@ public class Play {
         winDto.setWin(false);
         winDto.setReward(0);
 
-        ArrayList<Integer> playerChoose = new ArrayList<>();
-
-        playerChoose = getRandom(6, 49);
-
-        ArrayList<Integer> draw = new ArrayList<>();
-
-        draw = getRandom(6,49);
-
-       // System.out.print(draw.toString() + " | " + playerChoose.toString() + " | ");
+        ArrayList<Integer> playerChoose = getRandom(6, 49);
+        ArrayList<Integer> draw = getRandom(6,49);
 
         int hit = 0;
 
         for(int i = 0; i < 6 ; i++){
 
             if(draw.contains(playerChoose.get(i))){
-                System.out.print(playerChoose.get(i) + " ");
                 hit++;
             }
-
         }
 
         switch(hit){
             case 3:
+                System.out.print(draw.toString() + " | " + playerChoose.toString());
                 System.out.println("| Trójka: Wygraleś 24 PLN");
                 winDto.setReward(24);
+                winDto.setWin(true);
                 break;
             case 4:
+                System.out.print(draw.toString() + " | " + playerChoose.toString());
                 System.out.println("| Czwórka: Wygrałeś 205 PLN");
                 winDto.setReward(205);
+                winDto.setWin(true);
                 break;
             case 5:
+                System.out.print(draw.toString() + " | " + playerChoose.toString());
                 System.out.println("| piątka: Wygrałeś 6.000 PLN");
                 winDto.setReward(6000);
+                winDto.setWin(true);
                 break;
             case 6:
+                System.out.print(draw.toString() + " | " + playerChoose.toString());
                 System.out.println("| SZÓSTKA: Wygrałeś 1.000.000 PLN !!!");
-                winDto.setReward(1000000);
+                winDto.setReward(5000000);
+                winDto.setWin(true);
                 break;
-            default:
-                System.out.println("| Niestety, spróbuj ponownie");
         }
 
-        if(hit > 4){
-            winDto.setWin(true);
-        }
+        winDto.setHit(hit);
+
         return winDto;
 
     }
